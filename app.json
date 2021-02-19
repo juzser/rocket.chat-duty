@@ -1,0 +1,16 @@
+{
+    "id": "04b25397-1c1c-4bff-9acf-34a2e2fadffb",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.22.2",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Ser",
+        "homepage": "https://github.com/JuzSer/",
+        "support": "https://github.com/JuzSer/"
+    },
+    "name": "oe-duty",
+    "nameSlug": "oe-duty",
+    "classFile": "OeDutyApp.ts",
+    "description": "Announce persons who are on weekly duty, show the todo list.",
+    "implements": []
+}

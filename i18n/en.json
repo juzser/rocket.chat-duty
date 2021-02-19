@@ -1,0 +1,14 @@
+{
+    "duty_cmd_params": "help",
+    "duty_cmd_desc": "Duty commands",
+    "duty_bot_username": "Bot Username",
+    "duty_bot_description": "Username of bot to send message",
+    "team_list_label": "List Team",
+    "team_list_desc": "List of team each week",
+    "todo_list_label": "To-do list",
+    "todo_list_desc": "List of works todo in one week",
+    "todo_cron_pattern_label": "Schedule Pattern",
+    "todo_cron_pattern_desc": "Schedule to run the `duty start`",
+    "announce_room_label": "Room to announce",
+    "announce_room_desc": "Room to post announcement"
+}
