@@ -50,6 +50,11 @@ On application configuration it is possible to change following settings:
   Required: `false`<br />
   Example: `40 9 * * 1` (Run at Monday 9:40AM every week)
 
+- **Minimum completed jobs** <br />
+  The minimum number of jobs a team must complete or they will be repeated next week (0 to disable).<br />
+  Default: `3`<br />
+  Required: `false`<br />
+
 - **Team List** <br />
   List group of members, defined by usernames.<br />
   Default: `null`<br />

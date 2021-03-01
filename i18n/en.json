@@ -9,6 +9,8 @@
     "todo_list_desc": "List of works todo in one week",
     "todo_cron_pattern_label": "Schedule Pattern",
     "todo_cron_pattern_desc": "Schedule to run the `duty start`",
+    "todo_min_complete_label": "Minimum completed jobs",
+    "todo_min_complete_desc": "The minimum number of jobs a team must complete or they will be repeated next week (0 to disable)",
     "announce_room_label": "Room to announce",
     "announce_room_desc": "Room to post announcement"
 }

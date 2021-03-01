@@ -2,6 +2,9 @@ export const ContentGeneral = {
     announceCaption: (start: string, team: string) => {
         return `:calendar_spiral: :broom: ${team} trực nhật tuần này (${start}).`;
     },
+    repeatCaption: (start: string, team: string) => {
+        return `:calendar_spiral: :broom: ${team} chưa hoàn thành đủ công việc tuần trước nên tiếp tục trực nhật tuần này (${start}).`;
+    },
     doneAJob: (label: string) => {
         return `:white_check_mark: :muscle: Hooray! Team trực nhật đã ${label}`;
     },

@@ -28,6 +28,15 @@ export const settings: Array<ISetting> = [
         i18nDescription: 'todo_cron_pattern_desc',
     },
     {
+        id: 'min_complete',
+        type: SettingType.NUMBER,
+        packageValue: 3,
+        public: true,
+        required: false,
+        i18nLabel: 'todo_min_complete_label',
+        i18nDescription: 'todo_min_complete_desc',
+    },
+    {
         id: 'team_list',
         type: SettingType.CODE,
         packageValue: '',

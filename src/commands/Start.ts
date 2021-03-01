@@ -27,16 +27,28 @@ export async function StartCommand(
     const prevDate = getDateObj('prev');
     const lastDuty = await getData(getDateId(prevDate), read);
 
-    // Get Team by params or next team
+    /** Get Team index by params or next team */
     let teamIndex = 0;
+    let teamRepeat = false;
 
-    if (params && params.length) {
+    if (params && params.length) { // Get team index by param
         teamIndex = parseInt(params[0], 10);
-    } else if (duty || lastDuty) {
+    } else if (duty || lastDuty) { // Next team
         const pDuty = duty ? duty : lastDuty;
         teamIndex = (pDuty.teamIndex === app.teamList.length - 1)
             ? 0
             : pDuty.teamIndex + 1;
+
+        // If a team did not complete the min jobs, they have to do it again.
+        // 0 to disable this function
+        if (lastDuty && app.minCompletedJobs) {
+            const completedJobsCount = lastDuty.todoList.filter((i) => i.status === TodoType.DONE).length;
+
+            if (completedJobsCount < app.minCompletedJobs) {
+                teamRepeat = true;
+                teamIndex = lastDuty.teamIndex;
+            }
+        }
     }
 
     const team: Array<IPerson> = [];
@@ -96,7 +108,7 @@ export async function StartCommand(
     // Build message block
     const room = app.announceRoom;
     const blocks = modify.getCreator().getBlockBuilder();
-    announceBlock(blocks, dutyData);
+    announceBlock(blocks, dutyData, teamRepeat);
     const msgId = await sendMessage({ app, modify, room, blocks });
 
     dutyData.msgId = msgId || '';

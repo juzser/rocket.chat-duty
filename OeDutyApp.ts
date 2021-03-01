@@ -53,6 +53,11 @@ export class OeDutyApp extends App {
      */
     public schedulePattern: string;
 
+    /**
+     * Min completed jobs
+     */
+    public minCompletedJobs: number;
+
     constructor(info: IAppInfo, logger: ILogger, accessors: IAppAccessors) {
         super(info, logger, accessors);
     }
@@ -96,6 +101,7 @@ export class OeDutyApp extends App {
         this.teamList = JSON.parse(teamList);
         this.todoList = JSON.parse(todoList);
         this.schedulePattern = await environmentRead.getSettings().getValueById('cron_pattern');
+        this.minCompletedJobs = await environmentRead.getSettings().getValueById('min_complete');
 
         if (!this.teamList || !this.todoList) {
             return false;
@@ -143,6 +149,9 @@ export class OeDutyApp extends App {
                 break;
             case 'cron_pattern':
                 this.schedulePattern = setting.value;
+                break;
+            case 'min_complete':
+                this.minCompletedJobs = setting.value;
                 break;
         }
     }
