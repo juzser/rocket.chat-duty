@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@rocket.chat/apps-engine": "^1.22.2",
+        "@rocket.chat/apps-engine": "^1.28.0",
         "@types/node": "^10.12.14",
         "tslint": "^5.10.0",
         "typescript": "^4.1.5"
