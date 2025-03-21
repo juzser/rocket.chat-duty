@@ -1,12 +1,12 @@
 import { IModify } from '@rocket.chat/apps-engine/definition/accessors';
 import { IMessageAttachment } from '@rocket.chat/apps-engine/definition/messages';
 import { IRoom } from '@rocket.chat/apps-engine/definition/rooms';
-import { BlockBuilder } from '@rocket.chat/apps-engine/definition/uikit';
 import { IUser } from '@rocket.chat/apps-engine/definition/users';
 
 import { OeDutyApp as appClass } from '../../OeDutyApp';
 import { IStartDate } from '../interfaces/IDuty';
 import { AppConfig } from './config';
+import { LayoutBlock } from '@rocket.chat/ui-kit';
 
 /**
  * Sends a message using bot
@@ -26,7 +26,7 @@ export async function sendMessage({ app, modify, room, message, attachments, blo
     room: IRoom,
     message?: string,
     attachments?: Array<IMessageAttachment>,
-    blocks?: BlockBuilder,
+    blocks?: LayoutBlock[],
 }): Promise<string | undefined> {
     const msg = modify.getCreator().startMessage()
         .setGroupable(false)
@@ -103,7 +103,7 @@ export async function updateMessage({ app, modify, messageId, sender, message, a
     sender: IUser,
     message?: string,
     attachments?: Array<IMessageAttachment>,
-    blocks?: BlockBuilder,
+    blocks?: LayoutBlock[],
 }): Promise<void> {
     const msg = await modify.getUpdater().message(messageId, sender);
     msg.setEditor(msg.getSender());

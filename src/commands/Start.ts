@@ -96,8 +96,7 @@ export async function StartCommand(
         await updateData(prevDateId, prevDuty, persis);
 
         // Rebuild the message
-        const prevBlocks = modify.getCreator().getBlockBuilder();
-        announceBlock(prevBlocks, prevDuty);
+        const prevBlocks = announceBlock(app, prevDuty);
 
         await updateMessage({ app, messageId: prevDuty.msgId, sender, modify, blocks: prevBlocks });
     }
@@ -107,8 +106,7 @@ export async function StartCommand(
 
     // Build message block
     const room = app.announceRoom;
-    const blocks = modify.getCreator().getBlockBuilder();
-    announceBlock(blocks, dutyData, teamRepeat);
+    const blocks = announceBlock(app, dutyData, teamRepeat);
     const msgId = await sendMessage({ app, modify, room, blocks });
 
     dutyData.msgId = msgId || '';

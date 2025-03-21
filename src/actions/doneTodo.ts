@@ -69,8 +69,7 @@ export async function doneTodo({ app, data, room, user, read, persis, modify }: 
     const message = await modify.getUpdater().message(duty.msgId, user);
     message.setEditor(message.getSender());
 
-    const block = modify.getCreator().getBlockBuilder();
-    await announceBlock(block, duty);
+    const block = await announceBlock(app, duty);
     message.setBlocks(block);
 
     return modify.getUpdater().finish(message);
